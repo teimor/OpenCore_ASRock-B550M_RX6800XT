@@ -46,7 +46,8 @@ You can enable XMP if your memory supports it.
 
 ### ACPI
 
-You need to use `SSDT-CPUR.aml` and `SSDT-EC-USBX-DESKTOP.aml` files from here - [SSDTs: The easy way][21]
+- [SSDT-CPUR.aml][21]
+- [SSDT-EC-USBX-DESKTOP.aml][22]
 
 ### EFI drivers
 
