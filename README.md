@@ -190,7 +190,7 @@ Please follow this guide - [Dual boot time sync fix][92]
 
 [91]: USBKexts/iMacPro1,1
 [92]: dual_boot_time_sync_fix.md
-[94]: asrock_b550_steel_legend_usb_mapping.md "usb mapping"
+[93]: asrock_b550_steel_legend_usb_mapping.md "usb mapping"
 [94]: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Chart.md#drm-compatibility-on-macos-11 "WhateverGreen - Fix DRM on BigSur"
 [100]: _static/images/about.png "Abount this mac"
 [102]: _static/images/amd_power_tool.png "AMD Power Tool"
