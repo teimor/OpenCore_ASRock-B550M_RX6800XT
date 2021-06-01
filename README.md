@@ -25,6 +25,7 @@
 * [BIOS][10] version `>= 2.00`
 * Read [OpenCore Desktop Guide][20]
 * [OpenCore][1] `= 0.6.9`
+* macOS Big Sur 11.4+ [(Support for AMD Navi RDNA2 architecture added on 11.4)][12]
 
 ## Installation
 
@@ -129,10 +130,10 @@ Please check `Config Example\config.plist` for post-install config example.
 
 ### USB mapping and Resolving Restart/Shutdown issue
 
-The ASRock B550M Steel Legend contains two USB controllers, on of them uses one of the ports for the RGB lighting controller. When you restart or shutdown macOS it will sent a command to this RGB controller which will cause bad CMOS problem. In order to avoid this, you need to create a USB mapping without this port.
+The ASRock B550M Steel Legend contains two USB controllers. One of them  uses one of the ports for the RGB lighting controller. When you restart  or shutdown macOS, it will send a command to this RGB controller, which  will cause a bad CMOS error. To avoid this, you need to create a USB  mapping without this port.
 
-- Due that ASRock B550M Steel Legend contains two controllers, we can use all the USB ports due that macOS contains 15 port limit per controller. (Ref - [macOS and the 15 Ports Limit][25])
-- You can use my kext which enabled all the USB ports - [ASRock-B550M-STEEL-LEGEND-USB.kext][91]
+- ASRock B550M Steel Legend contains two USB controllers, which means we can enable all USB ports because the macOS 15 ports limit is per controller. (Ref - [macOS and the 15 Ports Limit][25])
+- You can use my kext, which enables all the USB ports - [ASRock-B550M-STEEL-LEGEND-USB.kext][91]
 - [More information about ASRock B550M Steel Legend USB Ports, Mapping and Schema][93]
 
 ----
@@ -143,7 +144,7 @@ Please follow this guide - [Dual boot time sync fix][92]
 
 ## Issues
 
-1. None :)
+1. Built in Mic on AMD  - more information 
 
 
 
@@ -178,7 +179,7 @@ Please follow this guide - [Dual boot time sync fix][92]
 
 [10]: https://www.asrock.com/mb/AMD/B550M%20Steel%20Legend/index.asp#BIOS
 [11]: https://www.aliexpress.com/item/33034394024.html
-
+[12]: https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_4-release-notes
 [20]: https://dortania.github.io/OpenCore-Install-Guide/
 [21]: https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml	"SSDT-CPUR.aml"
 [22]: https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml "SSDT-EC-USBX-DESKTOP.aml"
