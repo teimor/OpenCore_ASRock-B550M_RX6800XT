@@ -148,7 +148,7 @@ Please follow this guide - [Dual boot time sync fix][92]
 [26]: https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui
 [27]: https://github.com/acidanthera/OcBinaryData
 
-[91]: USBKexts/iMacPro1%2C1
+[91]: https://github.com/teimor/OpenCore_ASRock-B550M_RX6800XT/tree/main/USB%20Kexts/iMacPro1%2C1
 [92]: dual_boot_time_sync_fix.md
 [93]: asrock_b550_steel_legend_usb_mapping.md "usb mapping"
 [94]: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Chart.md#drm-compatibility-on-macos-11 "WhateverGreen - Fix DRM on BigSur"
