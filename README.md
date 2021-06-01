@@ -99,7 +99,10 @@ Please follow this guide - [Dual boot time sync fix][92]
 
 ## Issues
 
-1. Built in Mic on AMD  - more information 
+1. Built in Mic on AMD  - [more information][400]
+2. Any Virtual Machines that relying on Apple Hypervisor framework - [more information][401]
+   - For example: VMWare, Parallels, Docker and Android Studios
+   - VirtualBox is not based on it, so it can be used.
 
 
 
@@ -115,7 +118,6 @@ Please follow this guide - [Dual boot time sync fix][92]
 **Kexts**
 
 * [AppleALC.kext][2] - `AppleALC-1.6.0-RELEASE`
-* [IntelMausi.kext][6] - `IntelMausi-1.0.6-RELEASE`
 * [Lilu.kext][3] - `Lilu-1.5.3-RELEASE`
 * [VirtualSMC.kext][4] - `VirtualSMC-1.2.3-RELEASE`
 * [WhateverGreen.kext][5] - `WhateverGreen-1.4.9-RELEASE`
@@ -153,3 +155,8 @@ Please follow this guide - [Dual boot time sync fix][92]
 [100]: _static/images/about.png "Abount this mac"
 [102]: _static/images/amd_power_tool.png "AMD Power Tool"
 [105]: _static/images/config_device_properties_rx580.png "Config RX580 device properties"
+[400]: https://dortania.github.io/OpenCore-Post-Install/universal/audio.html#no-mic-on-amd "no mic"
+
+
+
+[401]: https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#cpu-support	"AMD CPU Limitations in macOS"
