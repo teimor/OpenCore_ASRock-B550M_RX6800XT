@@ -8,7 +8,7 @@ When running macOS & Windows at the same system time can be out of sync when cha
 
 ### Automatically
 
-1. Download [set_windows_store_utc_time.reg](https://raw.githubusercontent.com/teimore/OpenCore_GA-H97-D3H_RX580/master/_static/dual_boot_time_sync_fix/set_windows_store_utc_time.reg) (Right click > Save Link as...)
+1. Download [set_windows_store_utc_time.reg](https://raw.githubusercontent.com/teimor/OpenCore_ASRock-B550M_RX6800XT/main/_static/dual_boot_time_sync_fix/set_windows_store_utc_time.reg) (Right click > Save Link as...)
 2. Run it as Administrator
 3. Restart
 
