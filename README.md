@@ -35,8 +35,6 @@
 
 * *Exit* → Load UEFI BIOS Defaults [**Yes**]
 * *Boot* → CSM (Compatibility Support Module) → CSM [**Disabled**]
-* *BIOS Features* → VT-d [**Enabled**]
-* *BIOS Features* → Windows 8 Features [**Windows 8 WHQL**]
 
 ### XMP
 
@@ -64,8 +62,12 @@ You need to use `SSDT-CPUR.aml` and `SSDT-EC-USBX-DESKTOP.aml` files from here -
 * [Lilu.kext][3] - Dependency of `VirtualSMC.kext` and `WhateverGreen.kext`
 * [WhateverGreen.kext][5] - Need for iGPU support
 * [AppleALC.kext][2] - Getting audio to work as easy-peasy.
-* [IntelMausi.kext][6] - Intel driver for Ethernet 
-* USBH97-D3H-CF.kext - Plist-only kext for USB port mapping
+* [LucyRTL8125Ethernet.kext][6] - Realtek RTL8125 driver for Ethernet 
+* [AppleMCEReporterDisabler.kext][8] - disable the AppleMCEReporter kext which will cause kernel panics on AMD CPUs
+* [NVMeFix.kext][9] - Used for fixing power management and initialization on non-Apple NVMe.
+* [AMDRyzenCPUPowerManagement.kext][10] - Power management and monitoring of AMD processors
+* [SMCAMDProcessor.kext][10] - Publish readings to [VirtualSMC][4], which enables macOS applications like iStat to display sensor data.
+* [ASRock-B550M-STEEL-LEGEND-USB.kext][91] - Plist-only kext for USB port mapping
 
 ### Resources
 
@@ -78,53 +80,6 @@ You need to use `SSDT-CPUR.aml` and `SSDT-EC-USBX-DESKTOP.aml` files from here -
 ### Config Property list
 
 Please check `Config Example\config.plist` for post-install config example.
-
-#### Pre-Install
-
-**Set iGPU/dGPU config**
-
-- If you are using dGPU (for example: AMD RX580), under `DeviceProperties` → `PciRoot(0x0)/Pci(0x2,0x0)` :
-  - `AAPL,ig-platform-id` = `04001204` [Data] - iGPU is only used for compute tasks
-  - `device-id` = `12040000` [Data] - Fake in case you have an HD 4400 
-- If you are using just the iGPU, set `DeviceProperties` → `PciRoot(0x0)/Pci(0x2,0x0)` :
-  - `AAPL,ig-platform-id` = `0300220D` [Data] - iGPU is used to drive a display
-  - `device-id` = `12040000` [Data] - Fake in case you have an HD 4400 
-- Fix DRM for RX580, under `DeviceProperties` add `PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x0)` dictionary with:
-  *Not needed for Big Sur*
-  - `shikigva` = `80` [Number]
-
-**Set audio with AppleALC**
-
-- Set AppleALC, under `DeviceProperties` add `PciRoot(0x0)/Pci(0x1B,0x0)` dictionary with:
-  - `layout-id` = `63000000` [Data]
-
-**Platfom information & USB**
-
-- Populated `PlatformInfo > Generic` section in `config.plist`, can be easily done with `GenSMBIOS` please follow [OpenCore Desktop Guide][23].
-- Add the `USBH97-D3H-CF.kext` depends on the model you use `iMac14,1 / iMac14,2 / iMac15,1 / iMacPro1,1 ` from `USB Kexts`. (Also add it to your config, you can see an example on `Config Example`)
-- Big Sur if you are using any supported AMD dGPU my recommendation is using `iMacPro1,1` SMBIOS.
-
-#### Post-Install
-
-- `Misc -> Boot`
-  - Set `PickerMode` as `External` and add files from [Setting up OpenCore's GUI][25]
-- `Misc -> Security`
-  - Set `ScanPolicy` to `983299` - for more information [Scanpolicy Docs][24]
-- `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> boot-args`:
-  - Remove `-v` from your config.plist
-- `NVRAM -> Add -> D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> UIScale`:
-  - One-byte data defining boot.efi user interface scaling. Should be `01` for normal screens and `02` for HiDPI screens. (When using Dell P2418D set it to `02`)
-
-**DRM Compatibility on macOS Big Sur**
-
-[*Source: WhateverGreen documentation*][94]
-
-- `defaults write com.apple.AppleGVA gvaForceAMDKE -boolean yes` forces AMD DRM decoder for streaming services (like Apple TV and iTunes movie streaming)
-- `defaults write com.apple.AppleGVA gvaForceAMDAVCDecode -boolean yes` forces AMD AVC accelerated decoder
-- `defaults write com.apple.AppleGVA gvaForceAMDAVCEncode -boolean yes` forces AMD AVC accelerated encoder
-- `defaults write com.apple.AppleGVA gvaForceAMDHEVCDecode -boolean yes` forces AMD HEVC accelerated decoder
-- `defaults write com.apple.AppleGVA disableGVAEncryption -string YES` forces AMD HEVC accelerated decoder
-- `defaults write com.apple.coremedia hardwareVideoDecoder -string force` forces hardware accelerated video decoder (for any resolution)
 
 ----
 
@@ -174,9 +129,11 @@ Please follow this guide - [Dual boot time sync fix][92]
 [3]: https://github.com/acidanthera/Lilu/releases
 [4]: https://github.com/acidanthera/VirtualSMC/releases
 [5]: https://github.com/acidanthera/WhateverGreen/releases
-[6]: https://github.com/acidanthera/IntelMausi/releases
+[6]: https://github.com/Mieze/LucyRTL8125Ethernet
 [7]: https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi
-
+[8]: https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip
+[9]:https://github.com/acidanthera/NVMeFix/releases
+[10]:https://github.com/trulyspinach/SMCAMDProcessor
 [10]: https://www.asrock.com/mb/AMD/B550M%20Steel%20Legend/index.asp#BIOS
 [11]: https://www.aliexpress.com/item/33034394024.html
 [12]: https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_4-release-notes
