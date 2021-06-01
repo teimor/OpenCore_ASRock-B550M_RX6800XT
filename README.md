@@ -1,3 +1,5 @@
+# *DRAFT* - Still in progress
+
 # Hackintosh on ASRock B550M Steel Legend with AMD RX 6800 XT via [OpenCore][1]
 
 ![About this mac][100]
@@ -8,6 +10,8 @@
 
 * AMD Zen 3 Ryzen 7 5800x
 * ASRock B550M Steel Legend
+  * Audio: Realtek ALC1200
+  * LAN: Dragon RTL8125BG
 * G.Skill Trident Z Neo RGB 2x32GB DDR4 3800Mhz CL18 (F4-3800C18D-64GTZN)
 * ASRock AMD Radeon RX 6800 XT Taichi X 16G OC
 * Intel 660p 1TB m.2 (macOS)
@@ -28,22 +32,14 @@
 
 [ BIOS Features][102] and [Peripherals][103]
 
-* *Save & Exit* → Load Optimized Defaults [**Yes**]
-* *BIOS Features* → Fast boot [**Disabled**]
+* *Exit* → Load UEFI BIOS Defaults [**Yes**]
+* *Boot* → CSM (Compatibility Support Module) → CSM [**Disabled**]
 * *BIOS Features* → VT-d [**Enabled**]
 * *BIOS Features* → Windows 8 Features [**Windows 8 WHQL**]
-* *BIOS Features* → CSM Support [**Disabled**]
-* *Peripherals* → Initial Display Output [**IGFX**]
-* *Peripherals* → XHCI Mode [**Enabled**]
-* *Peripherals* → Intel Processor Graphics Memory Allocation [**64M**]
-* *Peripherals* → XHCI Hand-off [**Enabled**]
-* *Peripherals* → EHCI Hand-off [**Enabled**]
-* *Peripherals* → Super IO Configuration → Serial Port A [**Disabled**]
-  * Must be disable it in order that macOS Sleep function will work properly.
 
-### What's behind the scenes
+### XMP
 
-* `CFG-Lock / MSR 0xE2` option is [**UNLOCKED**][104].
+You can enable XMP if your memory supports it.
 
 ## Gathering files
 
@@ -51,7 +47,7 @@
 
 ### ACPI
 
-You can use `SSDT-EC.aml` and `SSDT-PLUG.aml` files, but it probably better to create your own - [SSDTs: The easy way][21]
+You need to use `SSDT-CPUR.aml` and `SSDT-EC-USBX-DESKTOP.aml` files from here - [SSDTs: The easy way][21]
 
 ### EFI drivers
 
@@ -131,58 +127,15 @@ Please check `Config Example\config.plist` for post-install config example.
 
 ----
 
-### USB mapping
+### USB mapping and Resolving Restart/Shutdown issue
 
-- First read - [macOS and the 15 Port Limit][24]
+The ASRock B550M Steel Legend contains two USB controllers, on of them uses one of the ports for the RGB lighting controller. When you restart or shutdown macOS it will sent a command to this RGB controller which will cause bad CMOS problem. In order to avoid this, you need to create a USB mapping without this port.
 
-Due to these limits disabled interfaces are `HS05, HS06, HS07, HS08 and HS13`. Those are the two usb2 ports near the PS/2 ports & two internal USB 2.0 headers. In addition, interface `HS14` used by `Fenvi FV-HB1200` for bluetooth and configured as internal. I'm using all 15 available ports due the limit but If you want to use other ports use this mapping table and [schema][101] to edit the `Info.plist` file inside the `USBH97-D3H-CF.kext`.
-
-| Name | UsbConnector | port     |
-| ---- | ------------ | -------- |
-| HS01 | 0            | 01000000 |
-| HS02 | 0            | 02000000 |
-| HS03 | 0            | 03000000 |
-| HS04 | 0            | 04000000 |
-| HS05 | 0            | 05000000 |
-| HS06 | 0            | 06000000 |
-| HS07 | 0            | 07000000 |
-| HS08 | 0            | 08000000 |
-| HS09 | 0            | 09000000 |
-| HS10 | 0            | 0A000000 |
-| HS11 | 0            | 0B000000 |
-| HS12 | 0            | 0C000000 |
-| HS13 | 0            | 0D000000 |
-| HS14 | 0            | 0E000000 |
-| SS01 | 3            | 10000000 |
-| SS02 | 3            | 11000000 |
-| SS03 | 3            | 12000000 |
-| SS04 | 3            | 13000000 |
-| SS05 | 3            | 14000000 |
-| SS06 | 3            | 15000000 |
-
-*For Internal USB ports like Bluetooth - use UsbConnector = `255`*
+- Due that ASRock B550M Steel Legend contains two controllers, we can use all the USB ports due that macOS contains 15 port limit per controller. (Ref - [macOS and the 15 Ports Limit][24])
+- You can use my kext which enabled all the USB ports - [ASRock-B550M-STEEL-LEGEND-USB.kext][91]
+- More information about ASRock B550M Steel Legend USB Ports, Mapping and Schema
 
 ----
-
-### Enable HiDPI for Dell P2418D
-
-![dell_p2418d_hidpi][106]
-
-Use [one-key-hidpi][91] to Enable HiDPI on Dell monitor, and have a "Native" Scaled in System Preferences.
-
-1. Turn **off** System Integrity Protection(SIP):
-   1. Restart & enter into **Recovery**.
-   2. Choose Utilities > Terminal.
-   3. Run `csrutil disable`
-   4. Restart & enter into **macOS**.
-2. Run [one-key-hidpi][91] script and set resolution config to `2560x1440 Display`
-3. Reboot and check that everthing is working currectly.
-4. Turn **on** System Integrity Protection(SIP):
-   1. Restart & enter into **Recovery**.
-   2. Choose Utilities > Terminal.
-   3. Run `csrutil enable`
-   4. Restart & enter into **macOS**.
-5. After reboot check everthing is working currectly and check SIP enabled by running `csrutil status` in Terminal.
 
 #### Dual boot time sync fix
 
@@ -194,11 +147,14 @@ Please follow this guide - [Dual boot time sync fix][92]
 
 
 
-Thanks to [Andrii Korzh][90] for his repsotory, knowledge sharing and permission.
-
 ---------------
 
 ### Current System Kexts & Drivers Versions
+
+**ACPI**
+
+- [SSDT-CPUR.aml][21] - `Aug 9,2020`
+- [SSDT-EC-USBX-DESKTOP.aml][22] - `Feb 3, 2021`
 
 **Kexts**
 
@@ -224,21 +180,17 @@ Thanks to [Andrii Korzh][90] for his repsotory, knowledge sharing and permission
 [11]: https://www.aliexpress.com/item/33034394024.html
 
 [20]: https://dortania.github.io/OpenCore-Install-Guide/
-[21]: https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html
+[21]: https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml	"SSDT-CPUR.aml"
+[22]: https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml "SSDT-EC-USBX-DESKTOP.aml"
 [22]: https://dortania.github.io/OpenCore-Install-Guide/config.plist/haswell.html#platforminfo
 [23]: https://dortania.github.io/OpenCore-Post-Install/universal/security.html#scanpolicy
 [24]: https://dortania.github.io/OpenCore-Post-Install/usb/#macos-and-the-15-port-limit
 [25]: https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui
 [26]: https://github.com/acidanthera/OcBinaryData
 
-[90]: https://github.com/korzhyk
-[91]: https://github.com/xzhih/one-key-hidpi
+[91]: USBKexts/iMacPro1,1
 [92]: dual_boot_time_sync_fix.md
 [93]: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Chart.md#drm-compatibility-on-macos-11 "WhateverGreen - Fix DRM on BigSur"
 [100]: _static/images/about.png "Abount this mac"
-[101]: _static/images/usb_mapping.png "USB Mapping"
-[102]: _static/images/bios_features.png "BIOS Features"
-[103]: _static/images/bios_peripherals.png "BIOS Peripherals"
 [104]: _static/images/amd_power_tool.png "AMD Power Tool"
 [105]: _static/images/config_device_properties_rx580.png "Config RX580 device properties"
-[106]: _static/images/dell_p2418d_hidpi.png "Dell P2418D HIDPI enabled"
