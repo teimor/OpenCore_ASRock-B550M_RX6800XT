@@ -4,7 +4,7 @@
 
 ![About this mac][100]
 
-![AMD Power Tool][104]
+![AMD Power Tool][102]
 
 ### **Hardware configuration**
 
@@ -68,7 +68,7 @@ You need to use `SSDT-CPUR.aml` and `SSDT-EC-USBX-DESKTOP.aml` files from here -
 
 ### Resources
 
-- [OcBinaryData][26] - For [Setting up OpenCore's GUI][25]
+- [OcBinaryData][27] - For [Setting up OpenCore's GUI][26]
 
 -----
 
@@ -99,7 +99,7 @@ Please check `Config Example\config.plist` for post-install config example.
 
 **Platfom information & USB**
 
-- Populated `PlatformInfo > Generic` section in `config.plist`, can be easily done with `GenSMBIOS` please follow [OpenCore Desktop Guide][22].
+- Populated `PlatformInfo > Generic` section in `config.plist`, can be easily done with `GenSMBIOS` please follow [OpenCore Desktop Guide][23].
 - Add the `USBH97-D3H-CF.kext` depends on the model you use `iMac14,1 / iMac14,2 / iMac15,1 / iMacPro1,1 ` from `USB Kexts`. (Also add it to your config, you can see an example on `Config Example`)
 - Big Sur if you are using any supported AMD dGPU my recommendation is using `iMacPro1,1` SMBIOS.
 
@@ -108,7 +108,7 @@ Please check `Config Example\config.plist` for post-install config example.
 - `Misc -> Boot`
   - Set `PickerMode` as `External` and add files from [Setting up OpenCore's GUI][25]
 - `Misc -> Security`
-  - Set `ScanPolicy` to `983299` - for more information [Scanpolicy Docs][23]
+  - Set `ScanPolicy` to `983299` - for more information [Scanpolicy Docs][24]
 - `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> boot-args`:
   - Remove `-v` from your config.plist
 - `NVRAM -> Add -> D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> UIScale`:
@@ -116,7 +116,7 @@ Please check `Config Example\config.plist` for post-install config example.
 
 **DRM Compatibility on macOS Big Sur**
 
-[*Source: WhateverGreen documentation*][93]
+[*Source: WhateverGreen documentation*][94]
 
 - `defaults write com.apple.AppleGVA gvaForceAMDKE -boolean yes` forces AMD DRM decoder for streaming services (like Apple TV and iTunes movie streaming)
 - `defaults write com.apple.AppleGVA gvaForceAMDAVCDecode -boolean yes` forces AMD AVC accelerated decoder
@@ -131,9 +131,9 @@ Please check `Config Example\config.plist` for post-install config example.
 
 The ASRock B550M Steel Legend contains two USB controllers, on of them uses one of the ports for the RGB lighting controller. When you restart or shutdown macOS it will sent a command to this RGB controller which will cause bad CMOS problem. In order to avoid this, you need to create a USB mapping without this port.
 
-- Due that ASRock B550M Steel Legend contains two controllers, we can use all the USB ports due that macOS contains 15 port limit per controller. (Ref - [macOS and the 15 Ports Limit][24])
+- Due that ASRock B550M Steel Legend contains two controllers, we can use all the USB ports due that macOS contains 15 port limit per controller. (Ref - [macOS and the 15 Ports Limit][25])
 - You can use my kext which enabled all the USB ports - [ASRock-B550M-STEEL-LEGEND-USB.kext][91]
-- More information about ASRock B550M Steel Legend USB Ports, Mapping and Schema
+- [More information about ASRock B550M Steel Legend USB Ports, Mapping and Schema][93]
 
 ----
 
@@ -182,15 +182,16 @@ Please follow this guide - [Dual boot time sync fix][92]
 [20]: https://dortania.github.io/OpenCore-Install-Guide/
 [21]: https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml	"SSDT-CPUR.aml"
 [22]: https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml "SSDT-EC-USBX-DESKTOP.aml"
-[22]: https://dortania.github.io/OpenCore-Install-Guide/config.plist/haswell.html#platforminfo
-[23]: https://dortania.github.io/OpenCore-Post-Install/universal/security.html#scanpolicy
-[24]: https://dortania.github.io/OpenCore-Post-Install/usb/#macos-and-the-15-port-limit
-[25]: https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui
-[26]: https://github.com/acidanthera/OcBinaryData
+[23]: https://dortania.github.io/OpenCore-Install-Guide/config.plist/haswell.html#platforminfo
+[24]: https://dortania.github.io/OpenCore-Post-Install/universal/security.html#scanpolicy
+[25]: https://dortania.github.io/OpenCore-Post-Install/usb/#macos-and-the-15-port-limit
+[26]: https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui
+[27]: https://github.com/acidanthera/OcBinaryData
 
 [91]: USBKexts/iMacPro1,1
 [92]: dual_boot_time_sync_fix.md
-[93]: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Chart.md#drm-compatibility-on-macos-11 "WhateverGreen - Fix DRM on BigSur"
+[94]: asrock_b550_steel_legend_usb_mapping "usb mapping"
+[94]: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Chart.md#drm-compatibility-on-macos-11 "WhateverGreen - Fix DRM on BigSur"
 [100]: _static/images/about.png "Abount this mac"
-[104]: _static/images/amd_power_tool.png "AMD Power Tool"
+[102]: _static/images/amd_power_tool.png "AMD Power Tool"
 [105]: _static/images/config_device_properties_rx580.png "Config RX580 device properties"
