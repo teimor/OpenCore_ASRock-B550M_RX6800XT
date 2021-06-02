@@ -134,6 +134,42 @@ For some reason the NVMe drives are set as external, in order to fix it we will 
 
 
 
+**DRM Compatibility on macOS 11**
+
+[*Source: WhateverGreen documentation*][104]
+
+- Find dGPU id using `gfxutil`:
+
+  ```bash
+  path/to/gfxutil -f GFX0
+  ```
+
+  For example:
+
+  ```bash
+  ./gfxutil -f GFX0
+  09:00.0 1002:73bf /PCI0@0/GPP8@3,1/SWUS@0/SWDS@0/GFX0@0 = PciRoot(0x0)/Pci(0x3,0x1)/Pci(0x0,0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)
+  ```
+
+  My dGPU id is `PciRoot(0x0)/Pci(0x3,0x1)/Pci(0x0,0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)`
+
+- Under `DeviceProperties` add will add this id as dictionary with:
+
+  - `unfairgva` = `01000000` [Data]
+
+  
+
+  ![dGPU DRM][204]
+
+In I used those overrides:
+
+- `defaults write com.apple.AppleGVA gvaForceAMDKE -boolean yes` forces AMD DRM decoder for streaming services (like Apple TV and iTunes movie streaming)
+- `defaults write com.apple.AppleGVA gvaForceAMDAVCDecode -boolean yes` forces AMD AVC accelerated decoder
+- `defaults write com.apple.AppleGVA gvaForceAMDAVCEncode -boolean yes` forces AMD AVC accelerated encoder
+- `defaults write com.apple.AppleGVA gvaForceAMDHEVCDecode -boolean yes` forces AMD HEVC accelerated decoder
+- `defaults write com.apple.AppleGVA disableGVAEncryption -string YES` forces AMD HEVC accelerated decoder
+- `defaults write com.apple.coremedia hardwareVideoDecoder -string force` forces hardware accelerated video decoder (for any resolution)
+
 ----
 
 ### USB mapping and Resolving Restart/Shutdown issue
@@ -204,6 +240,7 @@ Please follow this guide - [Dual boot time sync fix][101]
 [25]: https://dortania.github.io/OpenCore-Post-Install/usb/#macos-and-the-15-port-limit
 [26]: https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui
 [27]: https://github.com/acidanthera/OcBinaryData
+[28]: https://github.com/headkaze/Hackintool/releases/tag/3.5.7
 
 
 
@@ -219,6 +256,7 @@ Please follow this guide - [Dual boot time sync fix][101]
 [201]: _static/images/amd_power_tool.png "AMD Power Tool"
 [202]: _static/images/hard_drives_hackintool.png "Hackintool Hard-drives"
 [203]: _static/images/hard_drives_config.png	"config Hard-drives"
+[204]: _static/images/dgpu_drm_config.png	"dGPU DRM"
 [400]: https://dortania.github.io/OpenCore-Post-Install/universal/audio.html#no-mic-on-amd "no mic"
 
 [401]: https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#cpu-support	"AMD CPU Limitations in macOS"
