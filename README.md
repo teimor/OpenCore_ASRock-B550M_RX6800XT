@@ -199,7 +199,7 @@ Please follow this guide - [Dual boot time sync fix][101]
 
 ### Current System Kernal patches, ACPI, Kexts & Drivers Versions
 
-### Kernel patches
+**Kernel patches**
 
 - [Ryzen/Threadripper(17h and 19h)][13]  - `Feb 4, 2021`
 
