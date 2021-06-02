@@ -89,6 +89,24 @@ You can enable XMP if your memory supports it.
 
 Please check `Config Example\config.plist` for post-install config example.
 
+#### Pre-Install
+
+**Set AMD RX 6800 XT config**
+
+- Add `boot-args` :
+  - Under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> boot-args`
+  - Add `agdpmod=pikera` for fixing black screen at boot for Navi 20 GPUs. ([More information about Navi20][103])
+
+**Set audio with AppleALC**
+
+- Set AppleALC, under `DeviceProperties` add `PciRoot(0x0)/Pci(0x8,0x1)/Pci(0x0,0x4)` dictionary with:
+  - `layout-id` = `1` [Integer]
+
+**Platfom information**
+
+- Populated `PlatformInfo > Generic` section in `config.plist`, can be easily done with `GenSMBIOS` please follow [OpenCore Desktop Guide][23].
+- For Navi20 dGPU will work properly, We must use `iMacPro1,1` SMBIOS.
+
 ----
 
 ### USB mapping and Resolving Restart/Shutdown issue
