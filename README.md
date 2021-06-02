@@ -2,9 +2,9 @@
 
 # Hackintosh on ASRock B550M Steel Legend with AMD RX 6800 XT via [OpenCore][1]
 
-![About this mac][100]
+![About this mac][200]
 
-![AMD Power Tool][102]
+![AMD Power Tool][201]
 
 ### **Hardware configuration**
 
@@ -71,7 +71,7 @@ You can enable XMP if your memory supports it.
 * [NVMeFix.kext][9] - Used for fixing power management and initialization on non-Apple NVMe.
 * [AMDRyzenCPUPowerManagement.kext][10] - Power management and monitoring of AMD processors
 * [SMCAMDProcessor.kext][10] - Publish readings to [VirtualSMC][4], which enables macOS applications like iStat to display sensor data.
-* [ASRock-B550M-STEEL-LEGEND-USB.kext][91] - Plist-only kext for USB port mapping
+* [ASRock-B550M-STEEL-LEGEND-USB.kext][100] - Plist-only kext for USB port mapping
 
 ### Resources
 
@@ -92,14 +92,14 @@ Please check `Config Example\config.plist` for post-install config example.
 The ASRock B550M Steel Legend contains two USB controllers. One of them  uses one of the ports for the RGB lighting controller. When you restart  or shutdown macOS, it will send a command to this RGB controller, which  will cause a bad CMOS error. To avoid this, you need to create a USB  mapping without this port.
 
 - ASRock B550M Steel Legend contains two USB controllers, which means we can enable all USB ports because the macOS 15 ports limit is per controller. (Ref - [macOS and the 15 Ports Limit][25])
-- You can use my kext, which enables all the USB ports - [ASRock-B550M-STEEL-LEGEND-USB.kext][91]
-- [More information about ASRock B550M Steel Legend USB Ports, Mapping and Schema][93]
+- You can use my kext, which enables all the USB ports - [ASRock-B550M-STEEL-LEGEND-USB.kext][100]
+- [More information about ASRock B550M Steel Legend USB Ports, Mapping and Schema][102]
 
 ----
 
 #### Dual boot time sync fix
 
-Please follow this guide - [Dual boot time sync fix][92]
+Please follow this guide - [Dual boot time sync fix][101]
 
 ## Issues
 
@@ -143,22 +143,36 @@ Please follow this guide - [Dual boot time sync fix][92]
 [10]: https://www.asrock.com/mb/AMD/B550M%20Steel%20Legend/index.asp#BIOS
 [11]: https://www.aliexpress.com/item/33034394024.html
 [12]: https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_4-release-notes
+[13]: https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore/17h_19h
+
+
+
 [20]: https://dortania.github.io/OpenCore-Install-Guide/
 [21]: https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml	"SSDT-CPUR.aml"
 [22]: https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml "SSDT-EC-USBX-DESKTOP.aml"
-[23]: https://dortania.github.io/OpenCore-Install-Guide/config.plist/haswell.html#platforminfo
-[24]: https://dortania.github.io/OpenCore-Post-Install/universal/security.html#scanpolicy
+[23]: https://dortania.github.io/OpenCore-Install-Guide/AMD/zen.html#platforminfo
+[24]: https://dortania.github.io/OpenCore-Post-Install/universal/security/scanpolicy.html
 [25]: https://dortania.github.io/OpenCore-Post-Install/usb/#macos-and-the-15-port-limit
 [26]: https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui.html#setting-up-opencores-gui
 [27]: https://github.com/acidanthera/OcBinaryData
 
-[91]: https://github.com/teimor/OpenCore_ASRock-B550M_RX6800XT/tree/main/USB%20Kexts/iMacPro1%2C1
-[92]: dual_boot_time_sync_fix.md
-[93]: asrock_b550_steel_legend_usb_mapping.md "usb mapping"
-[94]: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Chart.md#drm-compatibility-on-macos-11 "WhateverGreen - Fix DRM on BigSur"
-[100]: _static/images/about.png "Abount this mac"
-[102]: _static/images/amd_power_tool.png "AMD Power Tool"
-[105]: _static/images/config_device_properties_rx580.png "Config RX580 device properties"
+
+
+[100]: https://github.com/teimor/OpenCore_ASRock-B550M_RX6800XT/tree/main/USB%20Kexts/iMacPro1%2C1
+[101]: dual_boot_time_sync_fix.md
+[102]: asrock_b550_steel_legend_usb_mapping.md "usb mapping"
+[103]: https://elitemacx86.com/threads/how-to-enable-amd-rx-6800-rx-6800xt-and-rx-6900xt-on-macos-big-sur.709/	"Enable Navi 20 on macOS Big Sur"
+[104]: https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.Chart.md#drm-compatibility-on-macos-11 "DRM Compatibility on macOS 11"
+
+
+
+[200]: _static/images/about.png "Abount this mac"
+[201]: _static/images/amd_power_tool.png "AMD Power Tool"
+[202]: _static/images/config_device_properties_rx580.png "Config RX580 device properties"
+
+
+
 [400]: https://dortania.github.io/OpenCore-Post-Install/universal/audio.html#no-mic-on-amd "no mic"
 
 [401]: https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#cpu-support	"AMD CPU Limitations in macOS"
+[93]: 
