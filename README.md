@@ -118,13 +118,13 @@ Please check `Config Example\config.plist` for post-install config example.
 
 **Set hard-drives as internal**
 
-For some reason the NVMe drives are set as external, in order to fix it we will to get those drives id and set them as internal drives.
+For some reason the NVMe drives are set as external. In order to fix this issue, We will to get the hard-drives id and set them as internal drives.
 
-- Download and open [Hackintool][28], go to PCIe Tab
+- Download and open [Hackintool][28]. Go to PCIe Tab
 
 ![Hackintool Hard Drives][202]
 
-- In this tab, search for in **Class** column for **Mass storage controller** devices, right click and **Copy Device Path**
+- In this tab, search in **Class** column for **Mass storage controller** devices, right click on the row and **Copy Device Path**
 - Under `DeviceProperties` add will add this id as dictionary with:
   - `built-in` = `01000000` [Data]
 
@@ -136,7 +136,7 @@ For some reason the NVMe drives are set as external, in order to fix it we will 
 
 [*Source: WhateverGreen documentation*][104]
 
-- Find dGPU id using `gfxutil`:
+- Find the id of dGPU by using `gfxutil`:
 
   ```bash
   path/to/gfxutil -f GFX0
@@ -151,7 +151,7 @@ For some reason the NVMe drives are set as external, in order to fix it we will 
 
   My dGPU id is `PciRoot(0x0)/Pci(0x3,0x1)/Pci(0x0,0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)`
 
-- Under `DeviceProperties` add will add this id as dictionary with:
+- Under `DeviceProperties` add this id as dictionary with:
 
   - `unfairgva` = `01000000` [Data]
 
