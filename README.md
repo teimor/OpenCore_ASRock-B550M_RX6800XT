@@ -197,7 +197,11 @@ Please follow this guide - [Dual boot time sync fix][101]
 
 ---------------
 
-### Current System Kexts & Drivers Versions
+### Current System Kernal patches, ACPI, Kexts & Drivers Versions
+
+### Kernel patches
+
+- [Ryzen/Threadripper(17h and 19h)][13]  - `Feb 4, 2021`
 
 **ACPI**
 
@@ -206,8 +210,13 @@ Please follow this guide - [Dual boot time sync fix][101]
 
 **Kexts**
 
+* [AMDRyzenCPUPowerManagement.kext][10] - 0.6.6``
+* [SMCAMDProcessor.kext][10] - `0.6.4`
 * [AppleALC.kext][2] - `AppleALC-1.6.0-RELEASE`
+* [AppleMCEReporterDisabler.kext][8]
 * [Lilu.kext][3] - `Lilu-1.5.3-RELEASE`
+* [LucyRTL8125Ethernet.kext][6] - `LucyRTL8125Ethernet-V1.1.0`
+* [NVMeFix.kext][9] - `NVMeFix-1.0.7-RELEASE`
 * [VirtualSMC.kext][4] - `VirtualSMC-1.2.3-RELEASE`
 * [WhateverGreen.kext][5] - `WhateverGreen-1.4.9-RELEASE`
 
