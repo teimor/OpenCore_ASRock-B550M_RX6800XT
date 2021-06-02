@@ -59,8 +59,6 @@ You can enable XMP if your memory supports it.
 ### Kexts
 
 * [VirtualSMC.kext][4] - A advanced replacement of FakeSMC, almost like native mac SMC.
-  * SMCProcessor.kext - Used for monitoring CPU temperature.
-  * SMCSuperIO.kext - Used for monitoring fan speed.
 * [Lilu.kext][3] - Dependency of `VirtualSMC.kext` and `WhateverGreen.kext`
 * [WhateverGreen.kext][5] - Need for iGPU support
 * [AppleALC.kext][2] - Getting audio to work as easy-peasy.
