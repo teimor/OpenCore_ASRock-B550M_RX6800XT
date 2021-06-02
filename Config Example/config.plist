@@ -1758,7 +1758,7 @@
 			<key>LauncherPath</key>
 			<string>Full</string>
 			<key>PickerAttributes</key>
-			<integer>17</integer>
+			<integer>1</integer>
 			<key>PickerAudioAssist</key>
 			<false/>
 			<key>PickerMode</key>

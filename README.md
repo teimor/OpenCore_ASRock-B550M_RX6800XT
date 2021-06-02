@@ -100,7 +100,7 @@ Please check `Config Example\config.plist` for post-install config example.
 **Set audio with AppleALC**
 
 - Set AppleALC, under `DeviceProperties` add `PciRoot(0x0)/Pci(0x8,0x1)/Pci(0x0,0x4)` dictionary with:
-  - `layout-id` = `1` [Integer]
+  - `layout-id` = `1` [Integer/Number]
 
 **Platfom information**
 
