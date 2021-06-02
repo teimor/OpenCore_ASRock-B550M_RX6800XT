@@ -117,6 +117,23 @@ Please check `Config Example\config.plist` for post-install config example.
   - Remove `-v` from your config.plist
 - `NVRAM -> Add -> D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> UIScale`:
   - One-byte data defining boot.efi user interface scaling. Should be `01` for normal screens and `02` for HiDPI screens. (When using Dell P2418D set it to `02`)
+
+**Set hard-drives as internal**
+
+For some reason the NVMe drives are set as external, in order to fix it we will to get those drives id and set them as internal drives.
+
+- Download and open [Hackintool][28], go to PCIe Tab
+
+![Hackintool Hard Drives][202]
+
+- In this tab, search for in **Class** column for **Mass storage controller** devices, right click and **Copy Device Path**
+- Under `DeviceProperties` add will add this id as dictionary with:
+  - `built-in` = `01000000` [Data]
+
+![Config Hard-drives][203]
+
+
+
 ----
 
 ### USB mapping and Resolving Restart/Shutdown issue
@@ -200,10 +217,8 @@ Please follow this guide - [Dual boot time sync fix][101]
 
 [200]: _static/images/about.png "Abount this mac"
 [201]: _static/images/amd_power_tool.png "AMD Power Tool"
-[202]: _static/images/config_device_properties_rx580.png "Config RX580 device properties"
-
-
-
+[202]: _static/images/hard_drives_hackintool.png "Hackintool Hard-drives"
+[203]: _static/images/hard_drives_config.png	"config Hard-drives"
 [400]: https://dortania.github.io/OpenCore-Post-Install/universal/audio.html#no-mic-on-amd "no mic"
 
 [401]: https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#cpu-support	"AMD CPU Limitations in macOS"
