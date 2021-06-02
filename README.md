@@ -31,10 +31,13 @@
 
 ### BIOS Settings
 
-[ BIOS Features][102] and [Peripherals][103]
-
 * *Exit* → Load UEFI BIOS Defaults [**Yes**]
 * *Boot* → CSM (Compatibility Support Module) → CSM [**Disabled**]
+* *Advanced* → PCI Configuration → Above 4G Decoding [**Enabled**]
+* *Advanced* → PCI Configuration → Re-Size BAR Support [**Disabled**]
+* *Advanced* → Storage Configuration → SATA Mode [**AHCI**]
+* *Security* → Secure Boot → Secure Boot [**Disabled**]
+* *Boot* → Fast Boot [**Disabled**]
 
 ### XMP
 
@@ -157,7 +160,5 @@ Please follow this guide - [Dual boot time sync fix][92]
 [102]: _static/images/amd_power_tool.png "AMD Power Tool"
 [105]: _static/images/config_device_properties_rx580.png "Config RX580 device properties"
 [400]: https://dortania.github.io/OpenCore-Post-Install/universal/audio.html#no-mic-on-amd "no mic"
-
-
 
 [401]: https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#cpu-support	"AMD CPU Limitations in macOS"
