@@ -161,7 +161,7 @@ For some reason the NVMe drives are set as external, in order to fix it we will 
 
   ![dGPU DRM][204]
 
-In I used those overrides:
+In addition, I used those overrides:
 
 - `defaults write com.apple.AppleGVA gvaForceAMDKE -boolean yes` forces AMD DRM decoder for streaming services (like Apple TV and iTunes movie streaming)
 - `defaults write com.apple.AppleGVA gvaForceAMDAVCDecode -boolean yes` forces AMD AVC accelerated decoder
