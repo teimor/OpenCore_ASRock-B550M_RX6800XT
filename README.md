@@ -1,5 +1,3 @@
-# *DRAFT* - Still in progress
-
 # Hackintosh on ASRock B550M Steel Legend with AMD RX 6800 XT via [OpenCore][1]
 
 ![About this mac][200]
