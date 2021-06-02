@@ -60,7 +60,7 @@ You can enable XMP if your memory supports it.
 
 * [VirtualSMC.kext][4] - A advanced replacement of FakeSMC, almost like native mac SMC.
 * [Lilu.kext][3] - Dependency of `VirtualSMC.kext` and `WhateverGreen.kext`
-* [WhateverGreen.kext][5] - Need for iGPU support
+* [WhateverGreen.kext][5] - Need for GPU support
 * [AppleALC.kext][2] - Getting audio to work as easy-peasy.
 * [LucyRTL8125Ethernet.kext][6] - Realtek RTL8125 driver for Ethernet 
 * [AppleMCEReporterDisabler.kext][8] - disable the AppleMCEReporter kext which will cause kernel panics on AMD CPUs
