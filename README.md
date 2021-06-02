@@ -118,6 +118,8 @@ Please check `Config Example\config.plist` for post-install config example.
 - `NVRAM -> Add -> D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> UIScale`:
   - One-byte data defining boot.efi user interface scaling. Should be `01` for normal screens and `02` for HiDPI screens. (When using Dell P2418D set it to `02`)
 
+*Optional - Minimal theme for picker - [opencanopy-minimal-theme by tekteq][14]*
+
 **Set hard-drives as internal**
 
 For some reason the NVMe drives are set as external, in order to fix it we will to get those drives id and set them as internal drives.
@@ -238,6 +240,7 @@ Please follow this guide - [Dual boot time sync fix][101]
 [11]: https://www.aliexpress.com/item/33034394024.html
 [12]: https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_4-release-notes
 [13]: https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore/17h_19h
+[14]: https://github.com/tekteq/opencanopy-minimal-theme
 
 
 
@@ -266,6 +269,9 @@ Please follow this guide - [Dual boot time sync fix][101]
 [202]: _static/images/hard_drives_hackintool.png "Hackintool Hard-drives"
 [203]: _static/images/hard_drives_config.png	"config Hard-drives"
 [204]: _static/images/dgpu_drm_config.png	"dGPU DRM"
+
+
+
 [400]: https://dortania.github.io/OpenCore-Post-Install/universal/audio.html#no-mic-on-amd "no mic"
 
 [401]: https://dortania.github.io/OpenCore-Install-Guide/macos-limits.html#cpu-support	"AMD CPU Limitations in macOS"
