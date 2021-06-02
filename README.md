@@ -112,7 +112,7 @@ Please check `Config Example\config.plist` for post-install config example.
 - `Misc -> Boot`
   - Set `PickerMode` as `External` and add files from [Setting up OpenCore's GUI][26]
 - `Misc -> Security`
-  - Set `ScanPolicy` to `983299` - for more information [Scanpolicy Docs][24]
+  - Set `ScanPolicy` to `0` - for dual boot, [Scanpolicy Docs][24]
 - `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> boot-args`:
   - Remove `-v` from your config.plist
 - `NVRAM -> Add -> D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14 -> UIScale`:
