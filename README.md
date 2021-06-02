@@ -73,6 +73,10 @@ You can enable XMP if your memory supports it.
 * [SMCAMDProcessor.kext][10] - Publish readings to [VirtualSMC][4], which enables macOS applications like iStat to display sensor data.
 * [ASRock-B550M-STEEL-LEGEND-USB.kext][100] - Plist-only kext for USB port mapping
 
+### Kernel patches
+
+- [Ryzen/Threadripper(17h and 19h)][13] - This is where the AMD kernel patching magic happens.
+
 ### Resources
 
 - [OcBinaryData][27] - For [Setting up OpenCore's GUI][26]
