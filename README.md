@@ -71,7 +71,7 @@ You can enable XMP if your memory supports it.
 
 ### Kernel patches
 
-- [Ryzen/Threadripper(17h and 19h)][13] - This is where the AMD kernel patching magic happens.
+- [AMD Kernel Patches][13] - This is where the AMD kernel patching magic happens.
 
 ### Resources
 
@@ -199,7 +199,7 @@ Please follow this guide - [Dual boot time sync fix][101]
 
 **Kernel patches**
 
-- [Ryzen/Threadripper(17h and 19h)][13]  - `Feb 4, 2021`
+- [AMD Kernel Patches][13]  - `Aug 14, 2021`
 
 **ACPI**
 
@@ -235,7 +235,7 @@ Please follow this guide - [Dual boot time sync fix][101]
 [10]: https://www.asrock.com/mb/AMD/B550M%20Steel%20Legend/index.asp#BIOS
 [11]: https://www.aliexpress.com/item/33034394024.html
 [12]: https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_4-release-notes
-[13]: https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore/17h_19h
+[13]: https://github.com/AMD-OSX/AMD_Vanilla/tree/master
 [14]: https://github.com/tekteq/opencanopy-minimal-theme
 
 
