@@ -211,7 +211,9 @@ Please follow this guide - [Dual boot time sync fix][101]
 **Kexts**
 
 * [AMDRyzenCPUPowerManagement.kext][10] - `0.7`
-* [SMCAMDProcessor.kext][10] - `0.7`
+* [SMCAMDProcessor.kext][10] - `0.6.4`
+  * Currently using `0.6.4` and not the latest (`0.7`) because the [iStat menu bug](https://github.com/trulyspinach/SMCAMDProcessor/issues/138)
+
 * [AppleALC.kext][2] - `AppleALC-1.6.6-RELEASE`
 * [AppleMCEReporterDisabler.kext][8]
 * [Lilu.kext][3] - `Lilu-1.5.7-RELEASE`
