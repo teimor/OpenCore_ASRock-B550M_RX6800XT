@@ -203,7 +203,7 @@ Please follow this guide - [Dual boot time sync fix][101]
 
 **ACPI**
 
-- [SSDT-CPUR.aml][21] - `Aug 9,2020`
+- [SSDT-CPUR.aml][21] - `Oct 13,2021`
 - [SSDT-EC-USBX-DESKTOP.aml][22] - `Feb 3, 2021`
 
 **Kexts**
