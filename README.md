@@ -22,7 +22,7 @@
 * Working hardware
 * [BIOS][10] version `>= 2.00`
 * Read [OpenCore Desktop Guide][20]
-* [OpenCore][1] `= 0.6.9`
+* [OpenCore][1] `= 0.7.5`
 * macOS Big Sur 11.4+ [(Support for AMD Navi RDNA2 architecture added on 11.4)][12]
 
 ## Installation
