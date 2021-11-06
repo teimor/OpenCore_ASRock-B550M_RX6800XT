@@ -22,7 +22,7 @@
 * Working hardware
 * [BIOS][10] version `>= 2.00`
 * Read [OpenCore Desktop Guide][20]
-* [OpenCore][1] `= 0.6.9`
+* [OpenCore][1] `= 0.7.5`
 * macOS Big Sur 11.4+ [(Support for AMD Navi RDNA2 architecture added on 11.4)][12]
 
 ## Installation
@@ -71,7 +71,9 @@ You can enable XMP if your memory supports it.
 
 ### Kernel patches
 
-- [Ryzen/Threadripper(17h and 19h)][13] - This is where the AMD kernel patching magic happens.
+- [AMD Kernel Patches][13] - This is where the AMD kernel patching magic happens.
+  - Core Count patch needs to be modified to boot your system. Find the three `algrey - Force cpuid_cores_per_package` patches and alter the `Replace` value only. [(Important! - Read This!)][15]
+
 
 ### Resources
 
@@ -199,28 +201,30 @@ Please follow this guide - [Dual boot time sync fix][101]
 
 **Kernel patches**
 
-- [Ryzen/Threadripper(17h and 19h)][13]  - `Feb 4, 2021`
+- [AMD Kernel Patches][13]  - `Aug 14, 2021`
 
 **ACPI**
 
-- [SSDT-CPUR.aml][21] - `Aug 9,2020`
+- [SSDT-CPUR.aml][21] - `Oct 13,2021`
 - [SSDT-EC-USBX-DESKTOP.aml][22] - `Feb 3, 2021`
 
 **Kexts**
 
-* [AMDRyzenCPUPowerManagement.kext][10] - 0.6.6``
+* [AMDRyzenCPUPowerManagement.kext][10] - `0.7`
 * [SMCAMDProcessor.kext][10] - `0.6.4`
-* [AppleALC.kext][2] - `AppleALC-1.6.0-RELEASE`
+  * Currently using `0.6.4` and not the latest (`0.7`) because the [iStat menu bug](https://github.com/trulyspinach/SMCAMDProcessor/issues/138)
+
+* [AppleALC.kext][2] - `AppleALC-1.6.6-RELEASE`
 * [AppleMCEReporterDisabler.kext][8]
-* [Lilu.kext][3] - `Lilu-1.5.3-RELEASE`
+* [Lilu.kext][3] - `Lilu-1.5.7-RELEASE`
 * [LucyRTL8125Ethernet.kext][6] - `LucyRTL8125Ethernet-V1.1.0`
-* [NVMeFix.kext][9] - `NVMeFix-1.0.7-RELEASE`
-* [VirtualSMC.kext][4] - `VirtualSMC-1.2.3-RELEASE`
-* [WhateverGreen.kext][5] - `WhateverGreen-1.4.9-RELEASE`
+* [NVMeFix.kext][9] - `NVMeFix-1.0.9-RELEASE`
+* [VirtualSMC.kext][4] - `VirtualSMC-1.2.7-RELEASE`
+* [WhateverGreen.kext][5] - `WhateverGreen-1.5.5-RELEASE`
 
 **Drivers**
 
-* [HfsPlus.efi][7] - `Feb 29, 2020`
+* [HfsPlus.efi][7] - `Nov 1, 2021`
 
 [1]: https://github.com/acidanthera/OpenCorePkg/releases
 [2]: https://github.com/acidanthera/AppleALC/releases
@@ -235,8 +239,9 @@ Please follow this guide - [Dual boot time sync fix][101]
 [10]: https://www.asrock.com/mb/AMD/B550M%20Steel%20Legend/index.asp#BIOS
 [11]: https://www.aliexpress.com/item/33034394024.html
 [12]: https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_4-release-notes
-[13]: https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore/17h_19h
+[13]: https://github.com/AMD-OSX/AMD_Vanilla/tree/master
 [14]: https://github.com/tekteq/opencanopy-minimal-theme
+[15]: https://github.com/AMD-OSX/AMD_Vanilla/#read-me-first
 
 
 
