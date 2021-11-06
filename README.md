@@ -72,6 +72,8 @@ You can enable XMP if your memory supports it.
 ### Kernel patches
 
 - [AMD Kernel Patches][13] - This is where the AMD kernel patching magic happens.
+  - Core Count patch needs to be modified to boot your system. Find the three `algrey - Force cpuid_cores_per_package` patches and alter the `Replace` value only. [(Important! - Read This!)][15]
+
 
 ### Resources
 
@@ -237,6 +239,7 @@ Please follow this guide - [Dual boot time sync fix][101]
 [12]: https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-11_4-release-notes
 [13]: https://github.com/AMD-OSX/AMD_Vanilla/tree/master
 [14]: https://github.com/tekteq/opencanopy-minimal-theme
+[15]: https://github.com/AMD-OSX/AMD_Vanilla/#read-me-first
 
 
 
